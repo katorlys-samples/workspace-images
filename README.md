@@ -6,11 +6,11 @@
 </a><br> -->
 
 <h1>
-  ExampleProject
+  Workspace Images
 </h1>
 
 <p>
-  One sentence to describe your project.
+  🐋 Ready-to-use Docker images for development workspaces.
 </p>
 
 [![Pull Requests][github-pr-badge]][github-pr-link]
@@ -23,7 +23,33 @@
 <!-- Main Body -->
 
 ## Introduction
-Describe your project clearly here.
+A set of ready-to-use Docker images for development workspaces.
+
+These well-tested images are designed to provide a consistent and isolated environment for developers, making it easier to set up development environments across different projects. 🎁
+
+Pull requests are welcome! If you have any suggestions or improvements, please feel free to contribute.
+
+## Usage
+```sh
+docker run -it katorlys/workspace-<image-name>
+```
+or
+```sh
+docker run -itd --name <container-name> katorlys/workspace-<image-name>
+docker exec -it <container-name> /bin/bash
+```
+
+## Build
+```sh
+docker build --no-cache -t katorlys/workspace-<image-name>:<current-date> <folder-path>
+```
+
+## Publish
+```sh
+docker tag katorlys/workspace-<image-name>:<current-date> katorlys/workspace-<image-name>:latest
+docker push katorlys/workspace-<image-name>:<current-date>
+docker push katorlys/workspace-<image-name>:latest
+```
 
 <!-- /Main Body -->
 
@@ -47,11 +73,11 @@ Describe your project clearly here.
 </div>
 
 [back-to-top-button]: https://img.shields.io/badge/BACK_TO_TOP-151515?style=flat-square
-[github-pr-badge]: https://img.shields.io/github/issues-pr/katorlys/ExampleProject?label=pulls&labelColor=151515&color=79E096&style=flat-square
-[github-pr-link]: https://github.com/katorlys/ExampleProject/pulls
-[github-issue-badge]: https://img.shields.io/github/issues/katorlys/ExampleProject?labelColor=151515&color=FFC868&style=flat-square
-[github-issue-link]: https://github.com/katorlys/ExampleProject/issues
-[github-license-badge]: https://img.shields.io/github/license/katorlys/ExampleProject?labelColor=151515&color=EFEFEF&style=flat-square
+[github-pr-badge]: https://img.shields.io/github/issues-pr/katorlys/workspace-images?label=pulls&labelColor=151515&color=79E096&style=flat-square
+[github-pr-link]: https://github.com/katorlys/workspace-images/pulls
+[github-issue-badge]: https://img.shields.io/github/issues/katorlys/workspace-images?labelColor=151515&color=FFC868&style=flat-square
+[github-issue-link]: https://github.com/katorlys/workspace-images/issues
+[github-license-badge]: https://img.shields.io/github/license/katorlys/workspace-images?labelColor=151515&color=EFEFEF&style=flat-square
 <!-- https://img.shields.io/badge/license-CC_BY--NC--SA_4.0-EFEFEF?labelColor=151515&style=flat-square -->
-[github-license-badge-bottom]: https://img.shields.io/github/license/katorlys/ExampleProject?labelColor=151515&color=EFEFEF&style=for-the-badge
+[github-license-badge-bottom]: https://img.shields.io/github/license/katorlys/workspace-images?labelColor=151515&color=EFEFEF&style=for-the-badge
 <!-- https://img.shields.io/badge/license-CC_BY--NC--SA_4.0-EFEFEF?labelColor=151515&style=for-the-badge -->
