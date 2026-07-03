@@ -30,6 +30,16 @@ These well-tested images are designed to provide a consistent and isolated envir
 Pull requests are welcome! If you have any suggestions or improvements, please feel free to contribute.
 
 ## Usage
+### DevContainer
+```json
+{
+    "name": "<container-name>",
+    "image": "katorlys/workspace-<image-name>",
+    "postStartCommand": "",
+}
+```
+
+### Docker
 ```sh
 docker run -it katorlys/workspace-<image-name>
 ```
@@ -37,6 +47,21 @@ or
 ```sh
 docker run -itd --name <container-name> katorlys/workspace-<image-name>
 docker exec -it <container-name> /bin/bash
+```
+### Docker Compose
+```yml
+services:
+  <container-name>:
+    image: katorlys/workspace-<image-name>
+    container_name: <container-name>
+    restart: unless-stopped
+    volumes:
+      - ./workspace:/workspace
+```
+and then
+```sh
+docker compose up -d
+docker compose exec <container-name> /bin/bash
 ```
 
 ## Build
@@ -73,11 +98,11 @@ docker push katorlys/workspace-<image-name>:latest
 </div>
 
 [back-to-top-button]: https://img.shields.io/badge/BACK_TO_TOP-151515?style=flat-square
-[github-pr-badge]: https://img.shields.io/github/issues-pr/katorlys/workspace-images?label=pulls&labelColor=151515&color=79E096&style=flat-square
-[github-pr-link]: https://github.com/katorlys/workspace-images/pulls
-[github-issue-badge]: https://img.shields.io/github/issues/katorlys/workspace-images?labelColor=151515&color=FFC868&style=flat-square
-[github-issue-link]: https://github.com/katorlys/workspace-images/issues
-[github-license-badge]: https://img.shields.io/github/license/katorlys/workspace-images?labelColor=151515&color=EFEFEF&style=flat-square
+[github-pr-badge]: https://img.shields.io/github/issues-pr/katorlys-samples/workspace-images?label=pulls&labelColor=151515&color=79E096&style=flat-square
+[github-pr-link]: https://github.com/katorlys-samples/workspace-images/pulls
+[github-issue-badge]: https://img.shields.io/github/issues/katorlys-samples/workspace-images?labelColor=151515&color=FFC868&style=flat-square
+[github-issue-link]: https://github.com/katorlys-samples/workspace-images/issues
+[github-license-badge]: https://img.shields.io/github/license/katorlys-samples/workspace-images?labelColor=151515&color=EFEFEF&style=flat-square
 <!-- https://img.shields.io/badge/license-CC_BY--NC--SA_4.0-EFEFEF?labelColor=151515&style=flat-square -->
-[github-license-badge-bottom]: https://img.shields.io/github/license/katorlys/workspace-images?labelColor=151515&color=EFEFEF&style=for-the-badge
+[github-license-badge-bottom]: https://img.shields.io/github/license/katorlys-samples/workspace-images?labelColor=151515&color=EFEFEF&style=for-the-badge
 <!-- https://img.shields.io/badge/license-CC_BY--NC--SA_4.0-EFEFEF?labelColor=151515&style=for-the-badge -->

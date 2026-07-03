@@ -9,5 +9,5 @@ Embedded development environment in Docker.
 
 Use `--device` flag to access USB devices in your container. For example:
 ```shell
-docker run --device=/dev/ttyUSB0 -it katorly/workspace-c:latest
+docker run --device=/dev/ttyUSB0 -it katorlys/workspace-embedded:latest
 ```

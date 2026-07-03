@@ -9,7 +9,7 @@ Docker-related development environment with optimization tools.
 
 Use `--privileged` flag to enable Docker inside your container. For example:
 ```shell
-docker run --privileged -it katorly/workspace-docker:latest
+docker run --privileged -it katorlys/workspace-docker:latest
 ```
 or in DevContainer:
 ```json
