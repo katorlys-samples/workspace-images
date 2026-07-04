@@ -1,9 +1,9 @@
 <a name="readme-top"></a>
 <div align="center">
 
-<!-- <a href="#">
-  <img src="https://github.com/katorlys/.github/blob/main/assets/mark/mark.png" height="100">
-</a><br> -->
+<a href="#">
+  <img src="https://github.com/katorlys-samples/workspace-images/blob/main/cover.png" height="100">
+</a><br>
 
 <h1>
   Workspace Images
@@ -41,11 +41,11 @@ Pull requests are welcome! If you have any suggestions or improvements, please f
 
 ### Docker
 ```sh
-docker run -it katorlys/workspace-<image-name>
+docker run -it -v ./workspace:/workspace katorlys/workspace-<image-name>
 ```
 or
 ```sh
-docker run -itd --name <container-name> katorlys/workspace-<image-name>
+docker run -itd --name <container-name> -v ./workspace:/workspace katorlys/workspace-<image-name>
 docker exec -it <container-name> /bin/bash
 ```
 ### Docker Compose
