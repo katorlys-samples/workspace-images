@@ -66,7 +66,7 @@ docker compose exec <container-name> /bin/bash
 
 ## Build
 ```sh
-docker build --no-cache -t katorlys/workspace-<image-name>:<current-date> <folder-path>
+docker build --no-cache --platform linux/amd64 -t katorlys/workspace-<image-name>:<current-date> <folder-path>
 ```
 
 ## Publish
