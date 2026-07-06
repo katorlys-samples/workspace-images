@@ -2,7 +2,7 @@
 <div align="center">
 
 <a href="#">
-  <img src="https://github.com/katorlys-samples/workspace-images/blob/main/cover.png" width="75%">
+  <img src="https://github.com/katorlys-samples/workspace-images/blob/main/banner.png" width="100%">
 </a><br>
 
 <h1>
