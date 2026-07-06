@@ -16,6 +16,11 @@ RUN curl -s https://get.sdkman.io | bash && \
     sdk install gradle && \
     sdk flush archives && \
     sdk flush tmp
+
+# Set environment variables
+ENV SDKMAN_DIR=/home/dev/.sdkman \
+    JAVA_HOME=/home/dev/.sdkman/candidates/java/current \
+    PATH="/home/dev/.sdkman/candidates/java/current/bin:/home/dev/.sdkman/candidates/kotlin/current/bin:/home/dev/.sdkman/candidates/maven/current/bin:/home/dev/.sdkman/candidates/gradle/current/bin:${PATH}"
 # *------------------ End of Java ------------------
 
 # *------------------ Node ------------------
@@ -35,7 +40,7 @@ RUN NVM_VERSION=$(curl -s https://api.github.com/repos/nvm-sh/nvm/releases/lates
     nvm cache clear && \
     # Install yarn, pnpm, etc.
     npm install -g yarn pnpm node-gyp typescript && \
-    echo "export PATH=$PATH:$HOME/.npm-global/bin:$HOME/.yarn/bin:$HOME/.local/share/pnpm" >> ~/.bashrc && \
+    echo 'export PATH="$PATH:$HOME/.npm-global/bin:$HOME/.yarn/bin:$HOME/.local/share/pnpm"' >> ~/.bashrc && \
     npm cache clean --force
 # *------------------ End of Node ------------------
 # !================== End of Installations that only need non-root ==================
@@ -106,21 +111,27 @@ COPY entrypoint.sh /usr/local/bin/
 COPY entrypoint.sh /workspace/
 RUN chmod +x /usr/local/bin/entrypoint.sh /workspace/entrypoint.sh
 # *------------------ End of Docker ------------------
+# !================== End of Installations that only need root ==================
 
+
+# !================== Installations that need non-root & root ==================
 # *------------------ Go ------------------
 # Install Go
 RUN GO_VERSION=$(curl -s https://go.dev/dl/?mode=json | jq -r '.[0].version') && \
     wget https://go.dev/dl/${GO_VERSION}.linux-amd64.tar.gz && \
     tar -C /usr/local -xzf ${GO_VERSION}.linux-amd64.tar.gz && \
     echo 'export PATH="/usr/local/go/bin:$PATH"' >> /etc/bash.bashrc && \
-    echo 'export GOPATH="/root/go"' >> /etc/bash.bashrc && \
+    echo 'export GOPATH="/home/dev/go"' >> /etc/bash.bashrc && \
     echo 'export CGO_ENABLED=1' >> /etc/bash.bashrc && \
     rm ${GO_VERSION}.linux-amd64.tar.gz
 
 # Set environment variables
-ENV PATH="/usr/local/go/bin:${PATH}" \
-    GOPATH="/root/go" \
+ENV PATH="/usr/local/go/bin:/home/dev/go/bin:${PATH}" \
+    GOPATH="/home/dev/go" \
     CGO_ENABLED=1
+
+# Set back to non-root user
+USER dev
 
 # Install development tools
 RUN go install -v github.com/go-delve/delve/cmd/dlv@latest && \
@@ -129,10 +140,7 @@ RUN go install -v github.com/go-delve/delve/cmd/dlv@latest && \
     go install -v github.com/air-verse/air@latest && \
     go clean -cache -modcache
 # *------------------ End of Go ------------------
-# !================== End of Installations that only need root ==================
 
-
-# !================== Installations that need non-root & root ==================
 # *------------------ Python ------------------
 # The Python version to install: https://devguide.python.org/versions/#supported-versions
 ARG PYTHON_VERSION=3.14
@@ -193,9 +201,11 @@ RUN DEBIAN_FRONTEND="noninteractive" apt-get update -y && apt-get install -y --n
 # Set back to non-root user
 USER dev
 
+# Set environment variables
+ENV PATH="/home/dev/.cargo/bin:${PATH}"
+
 # Install Rust
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable && \
-    export PATH=$HOME/.cargo/bin:$PATH && \
     # Install development tools
     rustup component add rust-src && \
     rustup component add rustfmt && \
