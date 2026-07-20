@@ -30,9 +30,6 @@ ENV RBENV_ROOT="/home/dev/.rbenv" \
     PATH="/home/dev/.rbenv/bin:/home/dev/.rbenv/shims:$PATH"
 RUN git clone https://github.com/rbenv/rbenv.git $RBENV_ROOT && \
 	git clone https://github.com/rbenv/ruby-build.git $RBENV_ROOT/plugins/ruby-build && \
-	echo 'export RBENV_ROOT="$HOME/.rbenv"' >> ~/.bashrc && \
-	echo 'export PATH="$RBENV_ROOT/bin:$RBENV_ROOT/shims:$PATH"' >> ~/.bashrc && \
-	echo 'eval "$(rbenv init - bash)"' >> ~/.bashrc && \
 	rbenv install ${RUBY_VERSION} && \
 	rbenv global ${RUBY_VERSION} && \
 	rbenv rehash && \

@@ -1,6 +1,6 @@
 FROM katorlys/workspace-base:latest
 
-# The Java version to install: 25.0.1.fx-zulu, 21.0.9.fx-zulu, 17.0.17.fx-zulu, 11.0.29.fx-zulu, 8.0.472.fx-zulu
+# The Java version to install: https://sdkman.io/jdks
 ARG JAVA_VERSION=25.0.1.fx-zulu
 
 # Install Java, Kotlin, Maven and Gradle
