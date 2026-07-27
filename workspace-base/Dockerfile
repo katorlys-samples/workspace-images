@@ -1,5 +1,5 @@
-# Use the official Ubuntu 24.04 base image
-FROM ubuntu:24.04
+# Use the official Ubuntu 26.04 base image
+FROM ubuntu:26.04
 
 # Set terminal environment variables
 SHELL ["/bin/bash", "-c"]
@@ -24,6 +24,7 @@ RUN userdel -r ubuntu && \
     man-db \
     nano \
     net-tools \
+    openssh-client \
     software-properties-common \
     sudo \
     time \

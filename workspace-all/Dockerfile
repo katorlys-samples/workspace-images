@@ -3,7 +3,7 @@ FROM katorlys/workspace-base:latest
 
 # !================== Installations that only need non-root ==================
 # *------------------ Java ------------------
-# The Java version to install: 25.0.1.fx-zulu, 21.0.9.fx-zulu, 17.0.17.fx-zulu, 11.0.29.fx-zulu, 8.0.472.fx-zulu
+# The Java version to install: https://sdkman.io/jdks
 ARG JAVA_VERSION=25.0.1.fx-zulu
 
 # Install Java, Kotlin, Maven and Gradle
@@ -25,7 +25,7 @@ ENV SDKMAN_DIR=/home/dev/.sdkman \
 
 # *------------------ Node ------------------
 # The Node.js version to install: https://nodejs.org/en/about/previous-releases#looking-for-the-latest-release-of-a-version-branch
-ARG NODE_VERSION=24.13.0
+ARG NODE_VERSION=24.18.0
 
 # Install nvm
 ENV NVM_DIR=/home/dev/.nvm
@@ -40,7 +40,6 @@ RUN NVM_VERSION=$(curl -s https://api.github.com/repos/nvm-sh/nvm/releases/lates
     nvm cache clear && \
     # Install yarn, pnpm, etc.
     npm install -g yarn pnpm node-gyp typescript && \
-    echo 'export PATH="$PATH:$HOME/.npm-global/bin:$HOME/.yarn/bin:$HOME/.local/share/pnpm"' >> ~/.bashrc && \
     npm cache clean --force
 # *------------------ End of Node ------------------
 # !================== End of Installations that only need non-root ==================
@@ -120,9 +119,6 @@ RUN chmod +x /usr/local/bin/entrypoint.sh /workspace/entrypoint.sh
 RUN GO_VERSION=$(curl -s https://go.dev/dl/?mode=json | jq -r '.[0].version') && \
     wget https://go.dev/dl/${GO_VERSION}.linux-amd64.tar.gz && \
     tar -C /usr/local -xzf ${GO_VERSION}.linux-amd64.tar.gz && \
-    echo 'export PATH="/usr/local/go/bin:$PATH"' >> /etc/bash.bashrc && \
-    echo 'export GOPATH="/home/dev/go"' >> /etc/bash.bashrc && \
-    echo 'export CGO_ENABLED=1' >> /etc/bash.bashrc && \
     rm ${GO_VERSION}.linux-amd64.tar.gz
 
 # Set environment variables

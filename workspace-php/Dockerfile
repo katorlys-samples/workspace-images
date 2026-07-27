@@ -5,8 +5,12 @@ USER root
 
 # Install PHP & extensions
 RUN PHP_VERSION=$(curl -s https://www.php.net/releases/index.php?json | jq -r '[.[] | select(.museum != true) | .version | select(test("^[0-9]+\\.[0-9]+\\.[0-9]+$"))] | sort_by(split(".") | map(tonumber)) | last | split(".")[0:2] | join(".")') && \
-	add-apt-repository -y ppa:ondrej/php && \
-	DEBIAN_FRONTEND="noninteractive" apt-get update -y && apt-get install -y --no-install-recommends \
+	apt-get update && apt-get install -y --no-install-recommends ca-certificates && \
+	curl -sSLo /tmp/debsuryorg-archive-keyring.deb https://packages.sury.org/debsuryorg-archive-keyring.deb && \
+	dpkg -i /tmp/debsuryorg-archive-keyring.deb && \
+	rm /tmp/debsuryorg-archive-keyring.deb && \
+	echo "deb [signed-by=/usr/share/keyrings/debsuryorg-archive-keyring.gpg] https://packages.sury.org/php/ $(. /etc/os-release && echo "$VERSION_CODENAME") main" > /etc/apt/sources.list.d/php.list && \
+	DEBIAN_FRONTEND="noninteractive" apt-get update && apt-get install -y --no-install-recommends \
 	php${PHP_VERSION} \
 	php${PHP_VERSION}-bcmath \
 	php${PHP_VERSION}-cli \

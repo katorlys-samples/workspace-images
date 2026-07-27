@@ -13,7 +13,7 @@ RUN DEBIAN_FRONTEND="noninteractive" apt-get update -y && apt-get install -y --n
 	libffi-dev \
 	libgdbm-dev \
 	libgmp-dev \
-	libncurses5-dev \
+	libncurses-dev \
 	libreadline-dev \
 	libssl-dev \
 	libyaml-dev \
