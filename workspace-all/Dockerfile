@@ -25,7 +25,7 @@ ENV SDKMAN_DIR=/home/dev/.sdkman \
 
 # *------------------ Node ------------------
 # The Node.js version to install: https://nodejs.org/en/about/previous-releases#looking-for-the-latest-release-of-a-version-branch
-ARG NODE_VERSION=24.18.0
+ARG NODE_VERSION=26.13.1
 
 # Install nvm
 ENV NVM_DIR=/home/dev/.nvm
@@ -139,7 +139,7 @@ RUN go install -v github.com/go-delve/delve/cmd/dlv@latest && \
 
 # *------------------ Python ------------------
 # The Python version to install: https://devguide.python.org/versions/#supported-versions
-ARG PYTHON_VERSION=3.14
+ARG PYTHON_VERSION=3.15
 
 # Run as root
 USER root

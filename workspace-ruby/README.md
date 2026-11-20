@@ -2,7 +2,7 @@
 Basic Ruby development environment.
 
 ## Includes
-- Ruby 4.0.5
+- Ruby 4
 - Rails
 - Bundler
 

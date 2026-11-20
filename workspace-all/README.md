@@ -45,7 +45,7 @@ or in DevContainer:
 Use SDKMAN to install and manage Java versions.
 
 ### workspace-node
-- Node.js 24.13.0 (Krypton)
+- Node.js 26 (Lithium)
 - npm, yarn, pnpm
 - node-gyp
 - TypeScript
@@ -53,7 +53,7 @@ Use SDKMAN to install and manage Java versions.
 Use nvm to install and manage Node.js versions.
 
 ### workspace-python
-- Python 3.14
+- Python 3.15
 - Tools for dependencies management, code analysis, package publishing, etc.
 - Jupyter
 

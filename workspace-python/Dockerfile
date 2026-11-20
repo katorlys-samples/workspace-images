@@ -1,7 +1,7 @@
 FROM katorlys/workspace-base:latest
 
 # The Python version to install: https://devguide.python.org/versions/#supported-versions
-ARG PYTHON_VERSION=3.14
+ARG PYTHON_VERSION=3.15
 
 # Run as root
 USER root

@@ -2,7 +2,7 @@
 Basic Web development environment.
 
 ## Includes
-- Node.js 24.13.0 (Krypton)
+- Node.js 26 (Lithium)
 - npm, yarn, pnpm
 - node-gyp
 - TypeScript

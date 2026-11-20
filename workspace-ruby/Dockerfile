@@ -1,7 +1,7 @@
 FROM katorlys/workspace-base:latest
 
 # The Ruby version to install: https://www.ruby-lang.org/en/downloads/releases
-ARG RUBY_VERSION=4.0.5
+ARG RUBY_VERSION=4.0.10
 
 # Run as root
 USER root

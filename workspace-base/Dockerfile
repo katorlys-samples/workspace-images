@@ -25,6 +25,7 @@ RUN userdel -r ubuntu && \
     nano \
     net-tools \
     openssh-client \
+    ripgrep \
     software-properties-common \
     sudo \
     time \

@@ -1,7 +1,7 @@
 FROM katorlys/workspace-base:latest
 
 # The Node.js version to install: https://nodejs.org/en/about/previous-releases#looking-for-the-latest-release-of-a-version-branch
-ARG NODE_VERSION=24.18.0
+ARG NODE_VERSION=26.13.1
 
 # Install nvm
 ENV NVM_DIR=/home/dev/.nvm

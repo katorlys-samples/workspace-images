@@ -2,7 +2,7 @@
 Basic Python development environment. (Not designed for LLM training.)
 
 ## Includes
-- Python 3.14
+- Python 3.15
 - Tools for dependencies management, code analysis, package publishing, etc.
 - Jupyter
 
